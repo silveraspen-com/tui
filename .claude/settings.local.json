@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(git *)",
-      "Bash(gh api *)",
-      "Bash(chmod +x /Users/jckbcjones/Documents/code_projects/123abc/silverAspen/tui/install.sh)"
-    ]
-  }
-}
