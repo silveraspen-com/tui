@@ -69,16 +69,18 @@ echo "Extracting to ${INSTALL_DIR}..."
 mkdir -p "$INSTALL_DIR"
 tar xzf "${tmp}/${tarball}" -C "$INSTALL_DIR"
 
-launcher="${INSTALL_DIR}/sa-dev"
-link="${BIN_DIR}/sa-dev"
-
-echo "Linking ${link} -> ${launcher}"
-if [ -w "$BIN_DIR" ]; then
-  ln -sf "$launcher" "$link"
-else
-  sudo ln -sf "$launcher" "$link"
-fi
+for cmd in sa-dev sa-dev-bob sa-dev-charlie sa-dev-alice; do
+  launcher="${INSTALL_DIR}/${cmd}"
+  link="${BIN_DIR}/${cmd}"
+  echo "Linking ${link} -> ${launcher}"
+  if [ -w "$BIN_DIR" ]; then
+    ln -sf "$launcher" "$link"
+  else
+    sudo ln -sf "$launcher" "$link"
+  fi
+done
 
 echo
 echo "Installed. Run: sa-dev"
+echo "For parallel personas, also: sa-dev-bob, sa-dev-charlie, sa-dev-alice"
 echo "(Requires Node.js 20+ on PATH.)"
